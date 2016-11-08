@@ -30,7 +30,7 @@ Sub error_interfaz_cargue()
         :=False, Transpose:=False
     Range("A1").Select
     Application.CutCopyMode = False
-    ActiveWorkbook.SaveAs Filename:="C:\Users\SOP1\Documents\errores interfaz\cargados\error_interfaz_" & fec & ".txt", _
+    ActiveWorkbook.SaveAs Filename:="C:\Users\SOP1\Documents\errores interfaz\descargados\" & fec & ".xlsx", _
         FileFormat:=xlText, CreateBackup:=False
     Application.DisplayAlerts = False
     ActiveWindow.Close
