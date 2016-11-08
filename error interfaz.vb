@@ -157,6 +157,7 @@ Sub errorinterfaz()
     ActiveWorkbook.SaveAs Filename:="C:\Users\SOP1\Documents\errores interfaz\enviados\error_interfaz_envio_" & fec & ".xlsx", _
     FileFormat:=xlOpenXMLWorkbook, CreateBackup:=False
     errorint.Activate
+    Range("A2").Select
     ActiveWorkbook.Save
     ActiveWindow.Close
     enverrorint.Activate
@@ -224,7 +225,7 @@ strbody = "Saludos," & vbNewLine & vbNewLine & _
 With iMsg
 Set .Configuration = iConf
  'dest = "cgonzalez@duarquint.com"
- dest = "calandate@gmail.com,aleon@duarquint.com,anoriega@duarquint.com,facturacion.wendy@duarquint.com,cgarcia@duarquint.com,compras1.bogota@duarquint.com,yaneth.duarte@ duarquint.com"
+ dest = "calandate@gmail.com,aleon@duarquint.com,anoriega@duarquint.com,facturacion.wendy@duarquint.com,cgarcia@duarquint.com,compras1.bogota@duarquint.com,yaneth.duarte@duarquint.com"
  If dest <> vbNullString Then
 .To = dest
 End If
@@ -247,7 +248,7 @@ End If
         .Send
         'si el numero de error es 0 (o sea, no existieron errores en el proceso),
         'hago que la función retorne Verdadero
-        If Err.Number = 0 Then
+        If err.Number = 0 Then
             respuesta1 = objShell.Popup("Correo enviado", 1, "Mensaje")
             Set objShell = Nothing
         Else
