@@ -12,6 +12,9 @@ Sub error_interfaz_cargue()
     Selection.Replace What:=",", Replacement:=".", LookAt:=xlPart, _
         SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
         ReplaceFormat:=False
+    Selection.Replace What:="""", Replacement:=" ", LookAt:=xlPart, _
+        SearchOrder:=xlByRows, MatchCase:=False, SearchFormat:=False, _
+        ReplaceFormat:=False
     Columns("B:B").Select
     Selection.Delete Shift:=xlToLeft
     Range("AE1").Select
