@@ -18,6 +18,7 @@ Sub errorinterfaz()
     arch = ActiveWorkbook.Name
     n_arch = Split(arch, ".")
     fec = n_arch(0)
+    ult = Range("A1048576").End(xlUp).Row
     Workbooks.OpenText Filename:=strArchivo, Origin _
         :=xlMSDOS, StartRow:=1, DataType:=xlDelimited, TextQualifier:= _
         xlDoubleQuote, ConsecutiveDelimiter:=False, Tab:=False, Semicolon:=False _
@@ -64,46 +65,46 @@ Sub errorinterfaz()
     Range("H1").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("C2:C500").Select
+    Range("C2:C" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("A2").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("E2:F500").Select
+    Range("E2:F" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("B2").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("O2:O500").Select
+    Range("O2:O" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("D2").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("Q2:Q500").Select
+    Range("Q2:Q" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("E2").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("U2:U500").Select
+    Range("U2:U" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("F2").Select
     ActiveSheet.Paste
     errorint.Activate
-    Range("B2:B500").Select
+    Range("B2:B" & ult - 1).Select
     Selection.Copy
     enverrorint.Activate
     Range("H2").Select
     ActiveSheet.Paste
-        Range("I2").Select
+    Range("I2").Select
     ActiveCell.FormulaR1C1 = "=TRIM(RC[-1])"
     Range("I2").Select
-    Selection.AutoFill Destination:=Range("I2:I500")
-    Range("I2:I500").Select
+    Selection.AutoFill Destination:=Range("I2:I" & ult)
+    Range("I2:I" & ult - 1).Select
     Selection.Copy
     Range("H2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -111,8 +112,8 @@ Sub errorinterfaz()
     Range("I2").Select
     ActiveCell.FormulaR1C1 = "=LOWER(RC[-1])"
     Range("I2").Select
-    Selection.AutoFill Destination:=Range("I2:I500")
-    Range("I2:I500").Select
+    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    Range("I2:I" & ult - 1).Select
     Selection.Copy
     Range("H2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -123,13 +124,40 @@ Sub errorinterfaz()
         "<>0,""CODIGO PACTADO EN FORMULA ESPECIAL"",IF(IFERROR(FIND(""siendo usado en una formula de acuerdo"",RC[-1]),0)<>0,""CODIGO ESPECIAL EN FORMULA NORMAL"",IF(IFERROR(FIND(""no es ni MR ni NPT"",RC[-1]),0)<>0,""CODIGO NO AUTORIZADO EN UNIDOSIS"",IF(IFERROR(FIND(""no se encuentra dispensacion previa"",RC[-1]),0)<>0,""MO SIN SOPORTE DE DISPENSACION"","""")))))))" & _
         ""
     Range("I2").Select
-    Selection.AutoFill Destination:=Range("I2:I500")
-    Range("I2:I500").Select
+    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    Range("I2:I" & ult - 1).Select
+    Selection.Copy
+    Range("I2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("J2").Select
+    ActiveCell.FormulaR1C1 = _
+        "=+RC[-4]-0"
+    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    Range("J2:J" & ult - 1).Select
+    Selection.Copy
+    Range("F2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("J2").Select
+    Selection.NumberFormat = "General"
+    ActiveCell.FormulaR1C1 = 1
+    ActiveCell.FormulaR1C1 = _
+        "=IF(RC[-4]>0,RC[-1],""----DEVOLUCION----  "" & RC[-1])"
+    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    Range("J2:J" & ult - 1).Select
+    Selection.Copy
+    Range("I2").Select
+    Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
+        :=False, Transpose:=False
+    Range("J2:J" & ult - 1).Select
+    Selection.ClearContents
+    Range("I2:I" & ult - 1).Select
     Selection.Copy
     Range("G2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
         :=False, Transpose:=False
-        Range("H2:I500").Select
+    Range("H2:I" & ult - 1).Select
     Selection.ClearContents
     Cells.Select
     Cells.EntireColumn.AutoFit
