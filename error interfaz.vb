@@ -112,8 +112,11 @@ Sub errorinterfaz()
     Range("I2").Select
     ActiveCell.FormulaR1C1 = "=LOWER(RC[-1])"
     Range("I2").Select
-    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    If ult <= 3 Then
     Range("I2:I" & ult - 1).Select
+    Else
+    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    End If
     Selection.Copy
     Range("H2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -124,8 +127,11 @@ Sub errorinterfaz()
         "<>0,""CODIGO PACTADO EN FORMULA ESPECIAL"",IF(IFERROR(FIND(""siendo usado en una formula de acuerdo"",RC[-1]),0)<>0,""CODIGO ESPECIAL EN FORMULA NORMAL"",IF(IFERROR(FIND(""no es ni MR ni NPT"",RC[-1]),0)<>0,""CODIGO NO AUTORIZADO EN UNIDOSIS"",IF(IFERROR(FIND(""no se encuentra dispensacion previa"",RC[-1]),0)<>0,""MO SIN SOPORTE DE DISPENSACION"","""")))))))" & _
         ""
     Range("I2").Select
-    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    If ult <= 3 Then
     Range("I2:I" & ult - 1).Select
+    Else
+    Selection.AutoFill Destination:=Range("I2:I" & ult - 1)
+    End If
     Selection.Copy
     Range("I2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -133,8 +139,11 @@ Sub errorinterfaz()
     Range("J2").Select
     ActiveCell.FormulaR1C1 = _
         "=+RC[-4]-0"
-    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    If ult <= 3 Then
     Range("J2:J" & ult - 1).Select
+    Else
+    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    End If
     Selection.Copy
     Range("F2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -144,8 +153,11 @@ Sub errorinterfaz()
     ActiveCell.FormulaR1C1 = 1
     ActiveCell.FormulaR1C1 = _
         "=IF(RC[-4]>0,RC[-1],""----DEVOLUCION----  "" & RC[-1])"
-    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    If ult <= 3 Then
     Range("J2:J" & ult - 1).Select
+    Else
+    Selection.AutoFill Destination:=Range("J2:J" & ult - 1)
+    End If
     Selection.Copy
     Range("I2").Select
     Selection.PasteSpecial Paste:=xlPasteValues, Operation:=xlNone, SkipBlanks _
@@ -253,7 +265,7 @@ strbody = "Saludos," & vbNewLine & vbNewLine & _
 With iMsg
 Set .Configuration = iConf
  'dest = "cgonzalez@duarquint.com"
- dest = "calandate@gmail.com,aleon@duarquint.com,anoriega@duarquint.com,facturacion.wendy@duarquint.com,cgarcia@duarquint.com,compras1.bogota@duarquint.com,yaneth.duarte@duarquint.com"
+ dest = "calandate@gmail.com,aleon@duarquint.com,anoriega@duarquint.com,facturacion.wendy@duarquint.com,cgarcia@duarquint.com,compras1.bogota@duarquint.com,,yaneth.duarte@duarquint.com,fmeneses@duarquint.com"
  If dest <> vbNullString Then
 .To = dest
 End If
@@ -293,3 +305,4 @@ End If
 End With
  Application.CutCopyMode = False
 End Sub
+
